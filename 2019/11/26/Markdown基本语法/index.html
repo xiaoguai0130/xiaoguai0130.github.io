@@ -390,14 +390,97 @@
         
         <div class="entry-content">
           <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Markdown是一种纯文本格式的标记语言。通过简单的标记语法，他可以使普通文本内容具有一定格式。</p>
-<h2 id="一、标题"><a href="#一、标题" class="headerlink" title="一、标题"></a>一、标题</h2><p>设置标题只需在前面加上#，<br>一个#是一级标题（最大的），两个#是二级标题，以此类推 ，一直到六级标题。<br>在书写数记得在符号后加一个空格。</p>
+<h2 id="一、标题"><a href="#一、标题" class="headerlink" title="一、标题"></a>一、标题</h2><hr>
+<p>设置标题只需在前面加上#，<br>一个#是一级标题（最大的），两个#是二级标题，以此类推 ，一直到六级标题。<br>在书写数记得在符号后加一个空格。</p>
 <p>下面是示例：</p>
 <pre><code>    # 这是一级标题
     ## 这是二级标题
     ### 这是三级标题
     #### 这是四级标题
     ##### 这是五级标题
-    ###### 这是六级标题</code></pre>
+    ###### 这是六级标题</code></pre><hr>
+<h2 id="二、字体"><a href="#二、字体" class="headerlink" title="二、字体"></a>二、字体</h2><ul>
+<li>斜体</li>
+</ul>
+<p>需要斜体的文字左右分别用一个*号括起来</p>
+<ul>
+<li>加粗</li>
+</ul>
+<p>需要加粗的文字左右分别用两个*号括起来</p>
+<ul>
+<li>斜体加粗</li>
+</ul>
+<p>需要斜体加粗的文字左右分别用三个*号括起来</p>
+<ul>
+<li>删除线</li>
+</ul>
+<p>需要加删除线的文字左右分别用连个~~号括起来</p>
+<p>下面是示例：</p>
+<pre><code>    *这是斜体*
+    **这是粗体**
+    ***这是斜体加粗***
+    ~~这是删除线文字~~</code></pre><hr>
+<h2 id="三、引用"><a href="#三、引用" class="headerlink" title="三、引用"></a>三、引用</h2><p>在引用文字前加&gt;即可。引用也可以嵌套，这个我也不太清楚<br>貌似加的&gt;&gt;及&gt;&gt;&gt;&gt;没有任何变化</p>
+<p>下面是示例：</p>
+<pre><code>    &gt; 这是引用的文章</code></pre><hr>
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>三个或三个以上的-+*都可以<br>…..我一般打四个…</p>
+<p>下面是示例：</p>
+<pre><code>    ----
+    ++++
+    ****
+</code></pre><hr>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>大概就是这么写…</p>
+<p>下面是示例：</p>
+<pre><code>    ![alt](图片地址 &quot;title&quot;)
+
+
+    恩.  alt就是图片下面的文字相当于对图片的解释；
+         title就是图片的标题，鼠标移动到图片上显示的内容
+</code></pre><hr>
+<h2 id="六、超链接"><a href="#六、超链接" class="headerlink" title="六、超链接"></a>六、超链接</h2><p>看下面示例</p>
+<p>下面是示例：</p>
+<pre><code>    [超链接名](超链接地址 &quot;title&quot;)
+
+    title 跟上面差不多，可加可不加，
+</code></pre><p>Markdown本身不支持连接在新页面打开，，若要在新页面打开的话需要用HTML语言的a标签代替。</p>
+<hr>
+<h2 id="七、列表"><a href="#七、列表" class="headerlink" title="七、列表"></a>七、列表</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>无序列表用(-+*)中的任何一种都可以</p>
+<p>下面是示例：</p>
+<pre><code>    + 这是无序列表
+    - 这是无序列表
+    * 这是无序列表</code></pre><h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>需要在数字后加点</p>
+<p>下面是示例：</p>
+<pre><code>    1. 有序列表
+    2. 有序列表
+    3. 有序列表
+</code></pre><h3 id="列表的嵌套"><a href="#列表的嵌套" class="headerlink" title="列表的嵌套"></a>列表的嵌套</h3><p>上一级和下一级之间敲两个空格就可以了<br>不同网页或浏览器好像不一样…<br>拿有序列表为例：</p>
+<pre><code>    1. 有序列表
+        - 无序列表        </code></pre><hr>
+<h2 id="八、表格"><a href="#八、表格" class="headerlink" title="八、表格"></a>八、表格</h2><p>应该是这样使用</p>
+<p>下面是示例：</p>
+<pre><code>    表头|表头|表头
+    ---|：--：|---：
+    内容|内容|内容
+    内容|内容|内容
+
+    第二行分割表头和内容
+    - 没什么用是为了对其
+    - 表示文字默认居左
+    - 两边加： 表示文字居中
+    - 右边加： 表示文字居右</code></pre><hr>
+<h2 id="九、代码"><a href="#九、代码" class="headerlink" title="九、代码"></a>九、代码</h2><p>单行代码两边用一旁边的点号括起来<br>多行用三个点好括起来</p>
+<p>下面是示例：</p>
+<pre><code>    `我是一行代码`
+
+
+
+    ```
+        我是代码
+        我是多行
+        我是点
+    ```</code></pre><hr>
+<h2 id="十、流程图"><a href="#十、流程图" class="headerlink" title="十、流程图"></a>十、流程图</h2><p>这个就不太了解了。。。<br>恩… 原谅博主的无知</p>
+
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
