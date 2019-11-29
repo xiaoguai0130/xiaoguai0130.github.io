@@ -401,7 +401,112 @@
     -p       连文件带属性复制
     -d        若文件是连接文件，复制他的连接属性
     -a         相当于-pdr</code></pre><hr>
-<h2 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h2>
+<h2 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h2><p>删除文件或目录<br>语法： rm[-dfirv][–help][–version][文件目录]</p>
+<pre><code>    -f 或 --force 强制删除文或目录
+    -r 或 --recursive 递归处理 ，将指定目录下的所有文件及子目录全部删除
+
+        强制删除文件：  rm -f ./1.txt
+        强制删除目录:   rm -f ./a 
+</code></pre><hr>
+<h2 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h2><p>移动命令 移动或更名现有的文件或文件名<br>语法： mv[源文件或目录][目标文件或目录]</p>
+<pre><code>    -f 或 --force 若文件或目录重复 ，覆盖现有的文件或目录
+
+    剪切文件： mv ./1.txt /root   将目录下的1.txt文件剪切到root目录下
+    重命名文件： mv 1.txt ./2.txt  将目录下的1.txt更名为2.txt</code></pre><hr>
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>查找命令 查找文件或目录<br>语法： find[目录][参数]</p>
+<pre><code>    -name 指定字符串为寻找文件或目录的范本样式
+    find /root/-name &#39;test*&#39;
+    查找root目录下的文件开头是test文件或目录  *是通配符。
+    字符串要用引号括起来
+</code></pre><hr>
+<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><p>vi 或 vim 文档编辑</p>
+<ol>
+<li>vim 文件名     进入一般模式（不能输入）</li>
+<li>按下i 从一般模式，进入到插入模式</li>
+<li>按下exc 从插入模式，退回到一般模式</li>
+<li>在一般模式下输入 :wq 退出编辑</li>
+</ol>
+<pre><code>    插入：
+        i            在光标前插入
+        shift+i     从光标所在行插入
+        a             在光标后插入
+        shift+a     在光标末尾插入
+        o            在光标当前行的下一行插入新行
+        shift+o     在光标当前行的上一行插入新行
+
+    复制粘贴：
+        yy            单行复制（将光标移到将要复制处）
+        nyy          多行复制（将光标移到要复制的首行处）
+        p            粘贴（将光标移到将要粘贴处）
+
+    定位：
+        gg             到文本的第一行
+        shift+g        到文本的最后一行
+
+    删除：
+        dd            删除光标所在行
+        ndd            删除n行
+
+    退出：
+        :q            退出vi（在没有做任何操作的前提下）
+        :q!            强制退出不保存
+        :W            保存不退出
+        :Wq            保存后退出
+
+    取消操作： u    取消已经执行的操作</code></pre><hr>
+<h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><p>用于过滤/搜索特定字符，可以使用正则表达式能多种命令配合<br>格式： grep [option]pattern[file]<br>    grep 参数 过滤 条件 文件  （-i 或 -ignore-case   忽略字符大小写的差别）<br>格式：其他命令 | grep 参数 过滤条件</p>
+<pre><code>    grep -i one /root/1.txt  
+    显示root目录下的1.txt文件中含有one字符的一行数据（忽略大小写）
+
+    cat /root/1.txt | grep -i one 
+    在cat命令输出的基础上，进行过滤
+</code></pre><hr>
+<h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h2><h3 id="ps命令"><a href="#ps命令" class="headerlink" title="ps命令"></a>ps命令</h3><h4 id="任务管理器"><a href="#任务管理器" class="headerlink" title="任务管理器:"></a>任务管理器:</h4><pre><code>ps [参数]
+-e 此参数的效果和指定“A”参数相同，显示所有程序
+-f 显示UID，PPIP，C与TIME栏位</code></pre><pre><code>    ps -ef | grep -i mysql
+    过滤出mysql这个进程
+</code></pre><h3 id="kill命令"><a href="#kill命令" class="headerlink" title="kill命令"></a>kill命令</h3><pre><code>    删除执行中的程序或工作
+    语法： kill[参数][程序]</code></pre><h4 id="kill-9-pid"><a href="#kill-9-pid" class="headerlink" title="kill -9 pid"></a>kill -9 pid</h4><pre><code>        可以先通过ps-ef 查找出索要删除的进程pid ，在通过kill -9 pid 终止进程</code></pre><h3 id="ifconfig"><a href="#ifconfig" class="headerlink" title="ifconfig"></a>ifconfig</h3><pre><code>    显示网络设备
+    格式：ping 主机名或ip地址   （按ctrl+c停止ping）</code></pre><h2 id="tra"><a href="#tra" class="headerlink" title="tra"></a>tra</h2><p>文件备份压缩<br>格式： tra 参数 压缩后的文件名 被压缩的文件名<br>       tra 参数 被解压的文件名 -C 指定目录  （如果省略 -C 指定目录，则解压到当前文件夹）</p>
+<pre><code>    -c 建立一个压缩文件的参数指令 （create） --压缩
+    -x 解开一个压缩文件的参数指令 （extract） --解压
+    -z 是否需要用gzip压缩
+    -v 压缩的过程中显示文件（verbose）
+    -f 使用文档名，在f之后要立即接档名（file）
+
+    常用组合：
+        解压：zxvf
+        压缩：zcvf
+    例：
+        tra -zcvf /root/1.tar  /root/a
+        将root目录下的a文件夹压缩为1.tar,放在root目录下
+        tar -zxvf ./1.tar
+        将目录下的的1.tar解压
+
+    注意：后缀为.tar.gz的压缩包用-zxvf
+              为.tar的压缩包用-xvf
+</code></pre><hr>
+<h2 id="关机-重启"><a href="#关机-重启" class="headerlink" title="关机 重启"></a>关机 重启</h2><pre><code>关机命令： reboot
+重启命令： halt</code></pre><hr>
+<h2 id="chomd命令"><a href="#chomd命令" class="headerlink" title="chomd命令"></a>chomd命令</h2><p>文件权限   变更文件或目录的权限<br>语法：chmod [参数][&lt;权限范围&gt;&lt;符号&gt;&lt;权限代码&gt;]</p>
+<h4 id="权限范围的表示"><a href="#权限范围的表示" class="headerlink" title="权限范围的表示"></a>权限范围的表示</h4><pre><code>    u: User 即文件目录的拥有者
+    g: Group 即文件或目录的所属群组
+    o: Other 除了文件或目录拥有者或搜书群组之外，其他用户皆属于这个范围
+    a: ALL 即全部的用户，包含拥有者，所属群组及其他用户</code></pre><h4 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h4><pre><code>    + 添加权限
+    — 取消权限</code></pre><h4 id="有关权限代号的部分"><a href="#有关权限代号的部分" class="headerlink" title="有关权限代号的部分"></a>有关权限代号的部分</h4><pre><code>    r: 读取权限，数字代号为“4”
+    w: 写入权限，数字代号为“2”
+    x: 执行或切换权限，数字代号“1”
+    -：不具任何权限，数字代号“0”
+    777： 所有权限
+
+
+
+    chmod u-rwx xxx
+    取消xxx目录的用户“读写执行”权限
+    chmod g-rwx xxx
+    取消xxx目录的组“读写执行”权限
+    chmod 777 xxx
+    给xxx目录添加所有权限</code></pre>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -429,19 +534,36 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-        
           
-            <div class="post-nepre full next">
+            <div class="post-nepre half previous">
           
-            <a href="/2019/11/26/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" rel="next">
+            <a href="/2019/11/26/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" rel="prev">
               <div class="background">
                 <img class="lazyload" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/2232021906797668de904c8df51d96a3e7124e7dcc7d5c86.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/2232021906797668de904c8df51d96a3e7124e7dcc7d5c86.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                Markdown</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2019/11/25/%E8%AE%B0%E5%BD%95%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%88%90%E5%8A%9F/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/1949121906797668b2927e8dcbec5658b195a9a25ae253af.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/1949121906797668b2927e8dcbec5658b195a9a25ae253af.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                Markdown</h3>
+                纪念</h3>
                 <hr>
               </div>
             </a>
