@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">是小怪呀</title>
+  <title itemprop="name">cmd操作mysql | 是小怪呀</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -346,293 +346,195 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 0px;"></div>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/u=203380594,543841958&amp;fm=26&amp;gp=0.jpg);" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/u=203380594,543841958&amp;fm=26&amp;gp=0.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      cmd操作mysql</h1>
+      <p class="entry-census">
+        <span>
+          <a href="xiaoguai0130.cn">
+            <img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@1.7/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="xiaoguai0130.cn">小怪</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2019-12-17<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
-  
-  <div class="notice" style="margin-top:60px">
-    <i class="iconfont icon-notification">
-    </i>
-    <div class="notice-content">欢迎来到小怪的空间站，目前技术还不成熟。。。。</div>
-  </div>
-  
-  <div class="top-feature-row">
-  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
-  <i class="fa fa-anchor" aria-hidden="true">
-  </i>
-  START:DASH!!</h1>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/theme-sakura/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/startdash/sakura.md.png">
-        </div>
-        <div class="info">
-          <h3>Sakura</h3>
-          <p>本站 hexo 主题</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/startdash/wangshiwu.jpg">
-        </div>
-        <div class="info">
-          <h3>小怪的万事屋</h3>
-          <p>一点点技术呀</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="https://y.qq.com/portal/profile.html#stat=y_new.top.user_pic" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/startdash/qqyinyue.jpg">
-        </div>
-        <div class="info">
-          <h3>qq音乐</h3>
-          <p>小怪的歌单</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-</div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
-      <i class="fa fa-envira" aria-hidden="true"></i>
-      Discovery</h1>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="大致操作"><a href="#大致操作" class="headerlink" title="大致操作"></a>大致操作</h1><h3 id="mysql服务的启动和停止"><a href="#mysql服务的启动和停止" class="headerlink" title="mysql服务的启动和停止"></a>mysql服务的启动和停止</h3><pre><code>    net stop mysql
+net start mysql</code></pre><h3 id="登陆mysql"><a href="#登陆mysql" class="headerlink" title="登陆mysql"></a>登陆mysql</h3><pre><code>    mysql -u用户名-p用户密码
+    键入命令mysql -uroot -p，回车后提示你输入密码，输入12345，然后回车即可进入到mysql中了，mysql的提示符是：
+mysql&gt;</code></pre><h3 id="连接远程的mysql"><a href="#连接远程的mysql" class="headerlink" title="连接远程的mysql"></a>连接远程的mysql</h3><pre><code>    格式： mysql -h主机地址 -u用户名－p用户密码
+
+1、例1：连接到本机上的MYSQL
+  首先在打开DOS窗口，然后进入mysql安装目录下的bin目录下，例如： D:\mysql\bin，再键入命令mysql -uroot-p，回车后提示你输密码，如果刚安装好MYSQL，超级用户root是没有密码的，故直接回车即可进入到MYSQL中了，MYSQL的提示符是：mysql&gt;
+2、例2：连接到远程主机上的MYSQL
+  假设远程主机的IP为：10.0.0.1，用户名为root,密码为123。则键入以下命令：
+   mysql -h10.0.0.1 -uroot-p123
+（注：u与root可以不用加空格，其它也一样）</code></pre><h3 id="操作数据库"><a href="#操作数据库" class="headerlink" title="操作数据库"></a>操作数据库</h3><pre><code>1、 显示数据库列表。
+show databases;
+缺省有两个数据库：mysql和test。mysql库存放着mysql的系统和用户权限信息，我们改密码和新增用户，实际上就是对这个库进行操作。
+2、 显示库中的数据表：
+use mysql;
+show tables;
+3、 显示数据表的结构：
+describe 表名;
+4、 建库与删库：
+create database 库名;
+drop database 库名;
+5、 建表：
+use 库名;
+create table 表名(字段列表);
+drop table 表名;
+6、 清空表中记录：
+delete from 表名;
+7、 显示表中的记录：
+select * from 表名;</code></pre><h3 id="导入导出数据"><a href="#导入导出数据" class="headerlink" title="导入导出数据"></a>导入导出数据</h3><pre><code>    1. 导出数据：
+mysqldump --opt test &gt; mysql.test
+即将数据库test数据库导出到mysql.test文件，后者是一个文本文件
+如：mysqldump -u root -p123456 --databases dbname &gt;mysql.dbname
+就是把数据库dbname导出到文件mysql.dbname中。
+2. 导入数据:
+mysqlimport -u root -p123456 &lt; mysql.dbname。
+不用解释了吧。
+3. 将文本数据导入数据库:
+文本数据的字段数据之间用tab键隔开。
+use test;
+load data local infile &quot;文件名&quot; into table 表名;
+1:使用SHOW语句找出在服务器上当前存在什么数据库：
+mysql&gt; SHOW DATABASES;
+2:2、创建一个数据库MYSQLDATA
+mysql&gt; CREATE DATABASE MYSQLDATA;
+3:选择你所创建的数据库
+mysql&gt; USE MYSQLDATA; (按回车键出现Database changed时说明操作成功！)
+4:查看现在的数据库中存在什么表
+mysql&gt; SHOW TABLES;
+5:创建一个数据库表
+mysql&gt; CREATE TABLE MYTABLE (name VARCHAR(20), sexCHAR(1));
+6:显示表的结构：
+mysql&gt; DESCRIBE MYTABLE;
+7:往表中加入记录
+mysql&gt; insert into MYTABLE values (&quot;hyq&quot;,&quot;M&quot;);
+8:用文本方式将数据装入数据库表中（例如D:/mysql.txt）
+mysql&gt; LOAD DATA LOCAL INFILE &quot;D:/mysql.txt&quot; INTOTABLE MYTABLE;
+9:导入.sql文件命令（例如D:/mysql.sql）
+mysql&gt;use database;
+mysql&gt;source d:/mysql.sql;
+10:删除表
+mysql&gt;drop TABLE MYTABLE;
+11:清空表
+mysql&gt;delete from MYTABLE;
+12:更新表中数据
+mysql&gt;update MYTABLE set sex=&quot;f&quot; where name=&#39;hyq&#39;;13：备份数据库mysqldump -u root库名&gt;xxx.data14：
+
+例2：连接到远程主机上的MYSQL
+　　假设远程主机的IP为：110.110.110.110，用户名为root,密码为abcd123。则键入以下命令：　　　
+
+　　mysql-h110.110.110.110 -uroot -pabcd123 　　
+
+　　（注:u与root可以不用加空格，其它也一样） 　　
+
+　　3、退出MYSQL命令：exit</code></pre><h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><pre><code>    mysql -h主机地址 -u用户名 -p密码   </code></pre><h3 id="断开"><a href="#断开" class="headerlink" title="断开"></a>断开</h3><pre><code>    exit</code></pre><h3 id="显示数据库"><a href="#显示数据库" class="headerlink" title="显示数据库"></a>显示数据库</h3><pre><code>    show database</code></pre><h3 id="显示表"><a href="#显示表" class="headerlink" title="显示表"></a>显示表</h3><pre><code>    show tables</code></pre><h3 id="显示表结构"><a href="#显示表结构" class="headerlink" title="显示表结构"></a>显示表结构</h3><pre><code>    describe 表名</code></pre><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><pre><code>    create database 库名</code></pre><h3 id="删除库"><a href="#删除库" class="headerlink" title="删除库"></a>删除库</h3><pre><code>    drop database 库名</code></pre><h3 id="使用库"><a href="#使用库" class="headerlink" title="使用库"></a>使用库</h3><pre><code>    use 库名</code></pre><h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><pre><code>    create table 表名 </code></pre><h3 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h3><pre><code>    drop table 表名</code></pre><h3 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h3><pre><code>    alter table s1 rename s2</code></pre><h3 id="查询表"><a href="#查询表" class="headerlink" title="查询表"></a>查询表</h3><pre><code>    select * from 表名</code></pre><h3 id="清空表"><a href="#清空表" class="headerlink" title="清空表"></a>清空表</h3><pre><code>    delete from 表名</code></pre><h3 id="备份表"><a href="#备份表" class="headerlink" title="备份表"></a>备份表</h3><pre><code>    mysqlbinmysqldump -h(ip) -uroot -p(password) databasenametablename &gt; tablename.sql</code></pre><h3 id="恢复表"><a href="#恢复表" class="headerlink" title="恢复表"></a>恢复表</h3><pre><code>    mysqlbinmysql -h(ip) -uroot -p(password) databasenametablename &lt; tablename.sql（操作前先把原来表删除）</code></pre><h3 id="增加列"><a href="#增加列" class="headerlink" title="增加列"></a>增加列</h3><pre><code>    ALTER TABLE t2 ADD c INT UNSIGNED NOT NULL AUTO_INCREMENT,ADDINDEX (c);</code></pre><h3 id="修改列"><a href="#修改列" class="headerlink" title="修改列"></a>修改列</h3><pre><code>    ALTER TABLE t2 MODIFY a TINYINT NOT NULL, CHANGE b cCHAR(20);</code></pre><h3 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h3><pre><code>    ALTER TABLE t2 DROP COLUMN c;</code></pre><h3 id="备份数据库"><a href="#备份数据库" class="headerlink" title="备份数据库"></a>备份数据库</h3><pre><code>    mysql\bin\mysqldump -h(ip) -uroot -p(password) databasename&gt; database.sql</code></pre><h3 id="恢复数据"><a href="#恢复数据" class="headerlink" title="恢复数据"></a>恢复数据</h3><pre><code>    mysql\bin\mysql -h(ip) -uroot -p(password) databasename&lt; database.sql</code></pre><h3 id="复制数据"><a href="#复制数据" class="headerlink" title="复制数据"></a>复制数据</h3><pre><code>    mysql\bin\mysqldump --all-databases &gt;all-databases.sql</code></pre><h3 id="修复数据"><a href="#修复数据" class="headerlink" title="修复数据"></a>修复数据</h3><pre><code>    mysqlcheck -A -o -uroot -p54safer</code></pre><h3 id="文本数据导入"><a href="#文本数据导入" class="headerlink" title="文本数据导入"></a>文本数据导入</h3><pre><code>    load data local infile \&quot;文件名\&quot; into table 表名;</code></pre><h3 id="数据导入导出"><a href="#数据导入导出" class="headerlink" title="数据导入导出"></a>数据导入导出</h3><pre><code>    mysql\bin\mysqlimport database tables.txt</code></pre>
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/custom/donate/WeChanQR.png"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2019/12/03/%E5%85%B3%E4%BA%8EEchars/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/212611190679766876de39cc4107ddcbbbfed31dc0425d09.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/212611190679766876de39cc4107ddcbbbfed31dc0425d09.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Echars</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="http://schema.org/BlogPosting">
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "jUfh1h1I0oYNlaxIrmzLNTK7-gzGzoHsz",
+        appKey: "x3cMGFuuAimxqAjD9c5PmMku",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-  <div class="post-thumb">
-    <a href="/2019/12/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/u=203380594,543841958&amp;fm=26&amp;gp=0.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2019-12-17 00:12</div>
-      <a href="/2019/12/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/" class="post-title">
-        <h3>cmd操作mysql</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E7%9F%A5%E8%AF%86/">知识<em>·</em></a>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Echars基本知识</p>
-        <div class="post-bottom">
-          <a href="/2019/12/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="xiaoguai0130.cn" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@1.7/img/custom/avatar.jpg" itemprop="image" alt="小怪" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="xiaoguai0130.cn" itemprop="url" rel="author">小怪</a>
+            </h3>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="http://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2019/12/03/%E5%85%B3%E4%BA%8EEchars/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/212611190679766876de39cc4107ddcbbbfed31dc0425d09.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2019-12-3 00:12</div>
-      <a href="/2019/12/03/%E5%85%B3%E4%BA%8EEchars/" class="post-title">
-        <h3>Echars</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E7%9F%A5%E8%AF%86/">知识<em>·</em></a>
-          
-            <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Echars基本知识</p>
-        <div class="post-bottom">
-          <a href="/2019/12/03/%E5%85%B3%E4%BA%8EEchars/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="http://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2019/11/26/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/1731141906797668c8c20554aa5a11630a6926131b22aa49.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2019-11-26 00:11</div>
-      <a href="/2019/11/26/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="post-title">
-        <h3>Linux</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Linux/">Linux<em>·</em></a>
-          
-            <a href="/tags/%E7%9F%A5%E8%AF%86/">知识<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Linux常用命令</p>
-        <div class="post-bottom">
-          <a href="/2019/11/26/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="http://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2019/11/26/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/2232021906797668de904c8df51d96a3e7124e7dcc7d5c86.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2019-11-26 00:11</div>
-      <a href="/2019/11/26/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="post-title">
-        <h3>Markdown</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E7%9F%A5%E8%AF%86/">知识<em>·</em></a>
-          
-            <a href="/tags/web/">web<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Markdown的基本语法</p>
-        <div class="post-bottom">
-          <a href="/2019/11/26/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="http://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2019/11/25/%E8%AE%B0%E5%BD%95%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%88%90%E5%8A%9F/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/1949121906797668b2927e8dcbec5658b195a9a25ae253af.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2019-11-25 00:11</div>
-      <a href="/2019/11/25/%E8%AE%B0%E5%BD%95%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%88%90%E5%8A%9F/" class="post-title">
-        <h3>纪念</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/">生活记录<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>纪念博客搭建成功</p>
-        <div class="post-bottom">
-          <a href="/2019/11/25/%E8%AE%B0%E5%BD%95%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%88%90%E5%8A%9F/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-
-
-    </main>
-      <!-- 首页默认取最最新文章集 -->
-    <!--  -->
-  </div>
-  
+        <hr>
+        <p><i class="iconfont icon-write"></i>爱学习爱生活</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">
