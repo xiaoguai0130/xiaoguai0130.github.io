@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Category: 技术 | 是小怪呀</title>
+  <title itemprop="name">flask之可视化 | 是小怪呀</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -346,369 +346,217 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img data-src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@1.6/img/banner/coding.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/download.jpg);" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/download.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      flask之可视化</h1>
+      <p class="entry-census">
+        <span>
+          <a href="xiaoguai0130.cn">
+            <img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@1.7/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="xiaoguai0130.cn">小怪</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2019-12-24<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">放养技术圈</h1>
-    <span class="cat-des">
-      <p>Geek – Only for Love</p>
-    </span>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h2 id="创建自己的数据表"><a href="#创建自己的数据表" class="headerlink" title="创建自己的数据表"></a>创建自己的数据表</h2><p><img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.3/img/boke/111.png" alt="基本表"></p>
+<hr>
+<h2 id="进入cmd查看表结构、"><a href="#进入cmd查看表结构、" class="headerlink" title="进入cmd查看表结构、"></a>进入cmd查看表结构、</h2><pre><code>    登录数据库： mysql -uroot -p123
+    查看数据库：show databases;
+    进入到需要的数据库中：use 数据库名;
+    查看里面的表：show tables;
+    查看表结构：describe 表名;
+        这个在后面flask框架中需要用到
+    查看表里的数据： select * from 表名;
+</code></pre><p>查出来用到的大致是<br><img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.3/img/boke/222.png" alt="基本表"><br><img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.3/img/boke/333.png" alt="基本表">    </p>
+<hr>
+<h2 id="生成flask框架，安装sqlalchemy包"><a href="#生成flask框架，安装sqlalchemy包" class="headerlink" title="生成flask框架，安装sqlalchemy包"></a>生成flask框架，安装sqlalchemy包</h2><p>进入pyCharm, 新建一个flask项目<br>进入到file –&gt;Settings–&gt;project<br>点击加号，数据加入的包安装就OK了<br>添加from flask_sqlalchemy import SQLAlchemy 没有报错就成功了</p>
+<hr>
+<h2 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h2><p>在项目的目录下新建一个config.py的文件写入数据库配置</p>
+<pre><code>    DIALECT = &#39;mysql&#39;           
+    DRIVER =&#39;mysqldb&#39;
+    USERNAME = &#39;root&#39;
+    PASSWORD = &#39;xiaolong0130&#39;
+    HOST = &#39;localhost&#39;
+    PORT = &#39;3306&#39;
+    DATABASE = &#39;hua&#39;
+
+    SQLALCHEMY_DATABASE_URI=&quot;{}+{}://{}:{}@{}:{}/{}?charset=utf8&quot;.format(DIALECT,DRIVER,USERNAME,PASSWORD,HOST,PORT,DATABASE)
+    SQLALCHEMY_TRACK_MODIFICATIONS=False</code></pre><p>在app的目录下连接一下</p>
+<pre><code>    import config     //引入文件
+    app.config.from_object(conffig)  //建立连接
+
+    db = SQLAlchemy(app)  //顺便建立一下模型，</code></pre><p>可以用 db.create_all() 检验一下是否连接成功</p>
+<hr>
+<h2 id="建立数据模型"><a href="#建立数据模型" class="headerlink" title="建立数据模型"></a>建立数据模型</h2><pre><code>找去之前查找出的那个表
+数据结构需根表中的一样</code></pre><pre><code>    class aa(db.Model):             
+    __tablename__ = &#39;huahua&#39;            //表名
+    id = db.Column(db.Integer,primary_key=True)        
+    name = db.Column(db.String(20),nullable=True
+    nums = db.Column(db.Integer,nullable=True)
+</code></pre><p>里面的基本词汇<br><img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.3/img/boke/444.png" alt="基本表"></p>
+<hr>
+<h2 id="导入到HTML的页面"><a href="#导入到HTML的页面" class="headerlink" title="导入到HTML的页面"></a>导入到HTML的页面</h2><p>在根文件夹下的templates文件夹下建一个index.html文件<br>建一个函数将数据库导入</p>
+<pre><code>
+    from flask import render_template    需引用一下
+
+    @app.route(&#39;/&#39;) 
+    def hello_world():
+        cc = aa.query.all()            //cc接收表里的所有数据
+        return render_template(&#39;index.html&#39;,cc=cc)       //将其传入到HTML中
+</code></pre><hr>
+<h2 id="利用echars可视"><a href="#利用echars可视" class="headerlink" title="利用echars可视"></a>利用echars可视</h2><p>利用jinja2 将传入入的数据在js里显示</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;script src=&quot;../static/echarts.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;main&quot; style=&quot;width: 600px;height: 500px;&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;script&gt;
+    var aa = echarts.init(document.getElementById(&#39;main&#39;))
+    var options = {
+        title:{
+            text: &#39;花店销售量&#39;
+        },
+        tooltip:{
+            trigger: &#39;axis&#39;
+        },
+        legend:{
+            data:[&#39;销量&#39;]
+        },
+        xAxis:{
+            data:[
+                {% for i in cc%}
+                    '{{ i.name}}',
+                {% endfor %}
+            ]
+        },
+        yAxis:{
+                type:&#39;value&#39;
+        },
+        series:{
+            name:&#39;花&#39; +
+                &#39;g花&#39;,
+            type: &#39;bar&#39;,
+            data: [
+                 {% for i in cc%}
+                    '{{ i.nums}}',
+                {% endfor %}
+            ]
+        }
+    }
+    aa.setOption(options)
+&lt;/script&gt;
+&lt;/html&gt;</code></pre><hr>
+<h2 id="最后的结果"><a href="#最后的结果" class="headerlink" title="最后的结果"></a>最后的结果</h2><p><img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.3/img/boke/555.png" alt="基本表"></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/custom/donate/WeChanQR.png"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2019/12/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/u=203380594,543841958&fm=26&gp=0.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/u=203380594,543841958&fm=26&gp=0.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                cmd操作mysql</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/12/24/flask%E5%8F%AF%E8%A7%86%E5%8C%96/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/download.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/12/24/flask%E5%8F%AF%E8%A7%86%E5%8C%96/">
-    flask之可视化</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-12-24</div>
-    <p>
-    利用flask框架可视化</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/12/24/flask%E5%8F%AF%E8%A7%86%E5%8C%96/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/12/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/u=203380594,543841958&amp;fm=26&amp;gp=0.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/12/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/">
-    cmd操作mysql</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-12-17</div>
-    <p>
-    Echars基本知识</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/12/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/12/03/%E5%85%B3%E4%BA%8EEchars/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/212611190679766876de39cc4107ddcbbbfed31dc0425d09.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/12/03/%E5%85%B3%E4%BA%8EEchars/">
-    Echars</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-12-3</div>
-    <p>
-    Echars基本知识</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/12/03/%E5%85%B3%E4%BA%8EEchars/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/26/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/2232021906797668de904c8df51d96a3e7124e7dcc7d5c86.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/26/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
-    Markdown</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-26</div>
-    <p>
-    Markdown的基本语法</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/26/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/26/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/1731141906797668c8c20554aa5a11630a6926131b22aa49.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/26/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
-    Linux</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-26</div>
-    <p>
-    Linux常用命令</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/26/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "jUfh1h1I0oYNlaxIrmzLNTK7-gzGzoHsz",
+        appKey: "x3cMGFuuAimxqAjD9c5PmMku",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="xiaoguai0130.cn" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@1.7/img/custom/avatar.jpg" itemprop="image" alt="小怪" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="xiaoguai0130.cn" itemprop="url" rel="author">小怪</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>爱学习爱生活</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
 
-<!-- 
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/12/24/flask%E5%8F%AF%E8%A7%86%E5%8C%96/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/download.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/12/24/flask%E5%8F%AF%E8%A7%86%E5%8C%96/">
-    flask之可视化</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-12-24</div>
-    <p>
-    利用flask框架可视化</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/12/24/flask%E5%8F%AF%E8%A7%86%E5%8C%96/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/12/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/u=203380594,543841958&amp;fm=26&amp;gp=0.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/12/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/">
-    cmd操作mysql</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-12-17</div>
-    <p>
-    Echars基本知识</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/12/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/12/03/%E5%85%B3%E4%BA%8EEchars/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/212611190679766876de39cc4107ddcbbbfed31dc0425d09.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/12/03/%E5%85%B3%E4%BA%8EEchars/">
-    Echars</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-12-3</div>
-    <p>
-    Echars基本知识</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/12/03/%E5%85%B3%E4%BA%8EEchars/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/26/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/2232021906797668de904c8df51d96a3e7124e7dcc7d5c86.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/26/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
-    Markdown</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-26</div>
-    <p>
-    Markdown的基本语法</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/26/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/11/26/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/xiaoguai0130/cdn@2.1/img/picture/1731141906797668c8c20554aa5a11630a6926131b22aa49.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/11/26/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
-    Linux</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-11-26</div>
-    <p>
-    Linux常用命令</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/11/26/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
 
- -->
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
